@@ -1,0 +1,46 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.recent-bg {
+    color: rgb(192, 35, 35);
+    font-family: 'Roboto Condensed', bold;
+}
+
+.padingss {
+    padding-top: 20px;
+}
+
+.prings {
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.img-pd {
+    padding-right: 20px;
+}
+
+.pad-bt {
+    padding-left: 30%;
+}
+
+.pad-prod {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.font-tt {
+    font-size: 70px;
+}
+
+.padds {
+    padding-left: 20px;
+    padding-right: 20px;
+}

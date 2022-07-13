@@ -1,0 +1,50 @@
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas: "one two three four" "five six seven eigth" ". . . .";
+}
+
+.one {
+    grid-area: one;
+}
+
+.two {
+    grid-area: two;
+}
+
+.three {
+    grid-area: three;
+}
+
+.four {
+    grid-area: four;
+}
+
+.five {
+    grid-area: five;
+}
+
+.six {
+    grid-area: six;
+}
+
+.seven {
+    grid-area: seven;
+}
+
+.eigth {
+    grid-area: eigth;
+}
+
+.pssd {
+    padding-left: 40px;
+    padding-top: 20px;
+    padding-right: 40px;
+}
+
+.degrad {
+    color: -prefix-linear-gradient(top, rgb(221, 221, 221), rgb(81, 68, 255) 80%, rgb(221, 221, 221));
+}

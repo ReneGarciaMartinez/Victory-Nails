@@ -1,0 +1,33 @@
+.padf {
+    padding-top: 40px;
+    padding-left: 17%;
+    padding-right: 20%px;
+    padding-bottom: 40px;
+}
+
+.radd {
+    border-radius: 40px;
+}
+
+.color-mod {
+    background-color: rgb(158, 26, 26);
+    color: rgb(245, 245, 245);
+}
+
+.color-bid {
+    background-color: rgb(253, 253, 253);
+}
+
+.space {
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
+
+.pgd {
+    padding-top: 50px;
+}
+
+.violet {
+    background-color: rgb(158, 26, 26);
+    color: rgb(245, 245, 245);
+}
