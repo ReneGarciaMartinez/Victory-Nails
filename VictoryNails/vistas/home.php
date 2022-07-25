@@ -29,70 +29,9 @@ if($session == null || $session == ''){
 
 </head>
 <!--Main Navigation-->
-<header>
-
-
-    <nav class="navbar navbar-dark  grays">
-        <div class="container-fluid">
-            <div>
-                <p class="d-flex input-group w-auto pad-nav " href="#">Tel: +52 9510000000 <br class="pad-navi"> correo123@gmail.com
-                </p>
-
-            </div>
-            <p>Bienvenido <?php echo $_SESSION["nombre"] ?> <?php echo $_SESSION["apellidos"] ?></p>
-            <ul class="navbar-nav flex-row d-none d-md-flex pad-vanLe">
-
-                <li class="nav-item me-3 me-lg-2 active">
-                    <a class="nav-link" href="#">
-                        <span><i class="fa fa-search text-black"></i></span>
-                    </a>
-                </li>
-
-                <li class="nav-item me-3 me-lg-2 active">
-                    <a class="nav-link" href="#">
-                        <span><img src="../img/shopping-cart.ico" width="20px" height="20px"></img></span>
-                    </a>
-                </li>
-
-            </ul>
-        </div>
-    </nav>
-    <nav class="navbar navbar-expand-lg navbar  grays">
-        <!-- Container wrapper -->
-        <div class="container-fluid">
-            <!-- Toggle button -->
-            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarCenteredExample" aria-controls="navbarCenteredExample" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                  </button>
-
-            <!-- Collapsible wrapper -->
-            <div class="collapse navbar-collapse justify-content-center" id="navbarCenteredExample">
-                <!-- Left links -->
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="nav-item">
-                    <a class=" active text-nav" aria-current="page" href="home.php">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="text-nav" href="store.php">STORE</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="text-nav" href="account.php">ACCOUNT</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="text-nav" href="singup.php">SIGN UP</a>
-                    <!-- Navbar dropdown -->
-
-
-                </ul>
-                <!-- Left links -->
-            </div>
-            <!-- Collapsible wrapper -->
-        </div>
-        <!-- Container wrapper -->
-    </nav>
-
-    </div>
-</header>
+<?php
+include("navbar_usuario.php");
+?>
 
 <body>
     <!--Inicio banner:one-->

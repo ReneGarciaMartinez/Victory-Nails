@@ -8,7 +8,7 @@
     <title>Home</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/navbar_usuario.css">
     <link rel="stylesheet" href="navbar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Font Awesome -->
@@ -19,17 +19,17 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
 
 </head>
-<!--Main Navigation-->
 <header>
 
-<nav class="navbar navbar-dark  grays">
+
+    <nav class="navbar navbar-dark  grays">
         <div class="container-fluid">
             <div>
                 <p class="d-flex input-group w-auto pad-nav " href="#">Tel: +52 9510000000 <br class="pad-navi"> correo123@gmail.com
                 </p>
 
             </div>
-
+            <p>Bienvenido <?php echo $_SESSION["nombre"] ?> <?php echo $_SESSION["apellidos"] ?></p>
             <ul class="navbar-nav flex-row d-none d-md-flex pad-vanLe">
 
                 <li class="nav-item me-3 me-lg-2 active">
@@ -40,7 +40,7 @@
 
                 <li class="nav-item me-3 me-lg-2 active">
                     <a class="nav-link" href="#">
-                        <span><img src="./img/shopping-cart.ico" width="20px" height="20px"></img></span>
+                        <span><img src="../img/shopping-cart.ico" width="20px" height="20px"></img></span>
                     </a>
                 </li>
 
@@ -52,8 +52,8 @@
         <div class="container-fluid">
             <!-- Toggle button -->
             <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarCenteredExample" aria-controls="navbarCenteredExample" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-bars"></i>
-                      </button>
+                    <i class="fas fa-bars"></i>
+                  </button>
 
             <!-- Collapsible wrapper -->
             <div class="collapse navbar-collapse justify-content-center" id="navbarCenteredExample">

@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto+Condensed&display=swap');
+.color-multi {
+    background-color: rgb(255, 255, 255);
+    height: 90px;
+}
+
+.grays {
+    background-color: rgb(255, 255, 255);
+}
+
+.burger {
+    position: absolute;
+    height: 0px;
+    text-decoration: none;
+    width: 0px;
+    outline: none !important;
+    border: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    background-color: rgba(255, 140, 0, 0);
+}
+
+.color-multi1 {
+    background-color: rgb(85, 85, 85);
+    height: 20px;
+    padding: 0;
+    position: relative;
+}
+
+.color-navsi {
+    background-color: rgb(255, 255, 255);
+    height: 40px;
+}
+
+ul,
+li {
+    list-style: none
+}
+
+.text-nav {
+    color: rgb(20, 20, 20);
+    padding-left: 8px;
+    padding-right: 8px;
+    font-family: Roboto, bold;
+}
+
+.text-nav:hover {
+    color: rgb(177, 27, 119);
+}
+
+#wrapper {
+    width: 100%;
+    height: 30px;
+    border: 1px solid rgba(253, 253, 253, 0);
+}
+
+button {
+    height: 20px;
+    position: relative;
+    margin: -20px -50px;
+    width: 100px;
+    top: 50%;
+    left: 50%;
+}
+
+.pad-nav {
+    padding-left: 70px;
+    padding-top: 8px;
+    color: rgb(29, 29, 29);
+}
+
+.pad-navi {
+    padding-top: 0%;
+    padding-left: 70px;
+    color: rgb(104, 104, 104);
+}
+
+.pad-vanLe {
+    padding-right: 70px;
+}
