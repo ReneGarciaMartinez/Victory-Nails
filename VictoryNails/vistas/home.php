@@ -31,6 +31,7 @@ if($session == null || $session == ''){
 <!--Main Navigation-->
 <?php
 include("navbar_usuario.php");
+include("../modules/productosModel.php");
 ?>
 
 <body>
@@ -76,55 +77,9 @@ include("navbar_usuario.php");
     </div>
     <!--cards products-->
     <div class="row row-cols-1 row-cols-md-3 g-4 padds">
-        <div class="col">
-            <div class="card h-100">
-
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                    <img src="https://cdn.pixabay.com/photo/2015/08/18/08/52/perfume-893475__480.jpg" class="img-fluid" />
-                    <a href="#!">
-                        <div class="mask" style="background-color: rgba(148, 148, 148, 0.15);"></div>
-                    </a>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title text-center">Calvin</h5>
-
-                    <div class="pad-bt"> <a href="#!" class="btn btn-outline-danger ">Comprar ahora</a></div>
-                </div>
+        
+        <?php  get_productos();  ?>
             </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                    <img src="https://cdn.pixabay.com/photo/2015/08/18/08/52/perfume-893475__480.jpg" class="img-fluid" />
-                    <a href="#!">
-                        <div class="mask" style="background-color: rgba(148, 148, 148, 0.15);"></div>
-                    </a>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title text-center">Calvin</h5>
-                    <div class="pad-bt"> <a href="#!" class="btn btn-outline-danger ">Comprar ahora</a></div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                    <img src="https://cdn.pixabay.com/photo/2015/08/18/08/52/perfume-893475__480.jpg" class="img-fluid" />
-                    <a href="#!">
-                        <div class="mask" style="background-color: rgba(148, 148, 148, 0.15);"></div>
-                    </a>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title text-center">Calvin</h5>
-                    <div class="pad-bt"> <a href="#!" class="btn btn-outline-danger ">Comprar ahora</a></div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
     <!--banner des%-->
     <div class="card padingss">
         <img src="../img/desc.png" alt="banner" class="img-fluid rounded-start">

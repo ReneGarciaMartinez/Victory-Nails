@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-07-2022 a las 19:43:16
+-- Tiempo de generación: 07-08-2022 a las 21:58:08
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.1.2
 
@@ -96,8 +96,8 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id_producto`, `nombre`, `precio`, `stock`, `vendidos`, `id_marca`, `descripcion`, `activo`, `img`) VALUES
-(3, 'Kalvin Klein', 350, '1', '0', 1, 'perfume Calvin Klein', 1, 'https://cdn.pixabay.com/photo/2015/08/18/08/52/perfume-893475__480.jpg'),
-(4, 'calvin klein2', 5000, '1', '0', 1, 'otro perfume', 1, 'https://cdn.shopify.com/s/files/1/0196/2088/8676/products/Perfume-Calvin-Klein-CK-One-Shock-EDT-M-100-ml_ef15c4db-f46d-4da4-a749-fadcff4077c2.jpg?v=1628745648'),
+(3, 'Kalvin Klein', 350, '0', '1', 1, 'perfume Calvin Klein', 1, 'https://cdn.pixabay.com/photo/2015/08/18/08/52/perfume-893475__480.jpg'),
+(4, 'calvin klein2', 5000, '0', '1', 1, 'otro perfume', 1, 'https://cdn.shopify.com/s/files/1/0196/2088/8676/products/Perfume-Calvin-Klein-CK-One-Shock-EDT-M-100-ml_ef15c4db-f46d-4da4-a749-fadcff4077c2.jpg?v=1628745648'),
 (5, 'victoria secret', 350, '1', '0', 2, 'victoria secret', 1, 'https://es.victoriassecret.com/p/380x507/tif/77/a4/77a4e5c8a1034a1997231d1131c1bccb/SU20_BTY_035_e10139578.jpg');
 
 -- --------------------------------------------------------
@@ -122,6 +122,27 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellidos`, `correo`, `password`, `id_perfil`) VALUES
 (1, '', '', '', '$2y$10$SJeEjZTaP9ABak.CI/gzFeMtUVOctAgiUlIEc5TyP5fErWYdne1Am', 1),
 (2, 'Rene', 'Garcia Martinez', 'rene@gmail.com', '$2y$10$bLvGhjmBY64sa5bcq98S8u4oY8OoN9UKeVIZEVWVGRVoqrtFa5GLO', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ventas`
+--
+
+CREATE TABLE `ventas` (
+  `id` int(11) NOT NULL,
+  `id_producto` int(11) NOT NULL,
+  `id_venta` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `ventas`
+--
+
+INSERT INTO `ventas` (`id`, `id_producto`, `id_venta`, `id_usuario`) VALUES
+(1, 3, 1, 2),
+(10, 4, 2, 2);
 
 --
 -- Índices para tablas volcadas
@@ -162,6 +183,14 @@ ALTER TABLE `usuarios`
   ADD KEY `id_perfil` (`id_perfil`);
 
 --
+-- Indices de la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_usuario` (`id_usuario`),
+  ADD KEY `id_producto` (`id_producto`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -196,6 +225,12 @@ ALTER TABLE `usuarios`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- Restricciones para tablas volcadas
 --
 
@@ -217,6 +252,13 @@ ALTER TABLE `productos`
 --
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`id_perfil`) REFERENCES `perfil` (`id_perfil`);
+
+--
+-- Filtros para la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  ADD CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`),
+  ADD CONSTRAINT `ventas_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
