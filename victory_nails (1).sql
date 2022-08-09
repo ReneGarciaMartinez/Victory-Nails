@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-08-2022 a las 21:58:08
+-- Tiempo de generación: 09-08-2022 a las 06:48:15
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.1.2
 
@@ -71,7 +71,8 @@ CREATE TABLE `perfil` (
 --
 
 INSERT INTO `perfil` (`id_perfil`, `perfil`) VALUES
-(1, 'cliente');
+(1, 'cliente'),
+(2, 'administrador');
 
 -- --------------------------------------------------------
 
@@ -85,20 +86,22 @@ CREATE TABLE `productos` (
   `precio` int(11) NOT NULL,
   `stock` text NOT NULL,
   `vendidos` text NOT NULL,
-  `id_marca` int(11) NOT NULL,
   `descripcion` text NOT NULL,
   `activo` int(11) NOT NULL,
-  `img` text NOT NULL
+  `img` text NOT NULL,
+  `marca` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`id_producto`, `nombre`, `precio`, `stock`, `vendidos`, `id_marca`, `descripcion`, `activo`, `img`) VALUES
-(3, 'Kalvin Klein', 350, '0', '1', 1, 'perfume Calvin Klein', 1, 'https://cdn.pixabay.com/photo/2015/08/18/08/52/perfume-893475__480.jpg'),
-(4, 'calvin klein2', 5000, '0', '1', 1, 'otro perfume', 1, 'https://cdn.shopify.com/s/files/1/0196/2088/8676/products/Perfume-Calvin-Klein-CK-One-Shock-EDT-M-100-ml_ef15c4db-f46d-4da4-a749-fadcff4077c2.jpg?v=1628745648'),
-(5, 'victoria secret', 350, '1', '0', 2, 'victoria secret', 1, 'https://es.victoriassecret.com/p/380x507/tif/77/a4/77a4e5c8a1034a1997231d1131c1bccb/SU20_BTY_035_e10139578.jpg');
+INSERT INTO `productos` (`id_producto`, `nombre`, `precio`, `stock`, `vendidos`, `descripcion`, `activo`, `img`, `marca`) VALUES
+(3, 'Kalvin Klein', 350, '0', '1', 'perfume Calvin Klein', 0, 'https://cdn.pixabay.com/photo/2015/08/18/08/52/perfume-893475__480.jpg', 'calvin'),
+(4, 'calvin klein2', 5000, '0', '1', 'otro perfume ', 1, 'https://cdn.pixabay.com/photo/2015/08/18/08/52/perfume-893475__480.jpg', 'calvin'),
+(5, 'victoria secret', 350, '0', '1', 'victoria secret', 1, 'https://es.victoriassecret.com/p/380x507/tif/77/a4/77a4e5c8a1034a1997231d1131c1bccb/SU20_BTY_035_e10139578.jpg', 'victoria secret'),
+(6, 'Cuba', 300, '3', '0', 'otro perfume mas chido', 1, 'https://respaldo.mundoaromas.cl/wp-content/uploads/2020/05/810-cuba-paris-5425017732389.png', 'cuba'),
+(7, 'Forever Wiskonsin', 0, '2', '0', 'otro perfume aun mas chido', 1, '600', 'albertano');
 
 -- --------------------------------------------------------
 
@@ -112,16 +115,19 @@ CREATE TABLE `usuarios` (
   `apellidos` text NOT NULL,
   `correo` text NOT NULL,
   `password` text NOT NULL,
-  `id_perfil` int(11) NOT NULL
+  `id_perfil` int(11) NOT NULL,
+  `direccion` text NOT NULL,
+  `telefono` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellidos`, `correo`, `password`, `id_perfil`) VALUES
-(1, '', '', '', '$2y$10$SJeEjZTaP9ABak.CI/gzFeMtUVOctAgiUlIEc5TyP5fErWYdne1Am', 1),
-(2, 'Rene', 'Garcia Martinez', 'rene@gmail.com', '$2y$10$bLvGhjmBY64sa5bcq98S8u4oY8OoN9UKeVIZEVWVGRVoqrtFa5GLO', 1);
+INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellidos`, `correo`, `password`, `id_perfil`, `direccion`, `telefono`) VALUES
+(1, '', '', '', '$2y$10$SJeEjZTaP9ABak.CI/gzFeMtUVOctAgiUlIEc5TyP5fErWYdne1Am', 1, '', ''),
+(2, 'Rene', 'Garcia Martinez', 'rene@gmail.com', '$2y$10$bLvGhjmBY64sa5bcq98S8u4oY8OoN9UKeVIZEVWVGRVoqrtFa5GLO', 1, '', ''),
+(3, 'Aide', 'Alvarez Garcia', 'aide@gmail.com', '$2y$10$bLvGhjmBY64sa5bcq98S8u4oY8OoN9UKeVIZEVWVGRVoqrtFa5GLO', 2, '', '');
 
 -- --------------------------------------------------------
 
@@ -142,7 +148,8 @@ CREATE TABLE `ventas` (
 
 INSERT INTO `ventas` (`id`, `id_producto`, `id_venta`, `id_usuario`) VALUES
 (1, 3, 1, 2),
-(10, 4, 2, 2);
+(10, 4, 2, 2),
+(11, 5, 3, 2);
 
 --
 -- Índices para tablas volcadas
@@ -172,8 +179,7 @@ ALTER TABLE `perfil`
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
-  ADD PRIMARY KEY (`id_producto`),
-  ADD KEY `id_marca` (`id_marca`);
+  ADD PRIMARY KEY (`id_producto`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -210,25 +216,25 @@ ALTER TABLE `marca`
 -- AUTO_INCREMENT de la tabla `perfil`
 --
 ALTER TABLE `perfil`
-  MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas
@@ -240,12 +246,6 @@ ALTER TABLE `ventas`
 ALTER TABLE `carrito`
   ADD CONSTRAINT `carrito_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`),
   ADD CONSTRAINT `carrito_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`);
-
---
--- Filtros para la tabla `productos`
---
-ALTER TABLE `productos`
-  ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`id_marca`) REFERENCES `marca` (`id_marca`);
 
 --
 -- Filtros para la tabla `usuarios`

@@ -22,7 +22,7 @@
 <!--Main Navigation-->
 
     <?php
-    include("navbar.php");
+        include("navbarPrincipio.php");
     ?>
 
 

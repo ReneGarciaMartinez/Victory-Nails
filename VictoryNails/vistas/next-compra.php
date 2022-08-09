@@ -1,3 +1,12 @@
+<?php
+@session_start();
+error_reporting(0);
+$session = $_SESSION["nombre"];
+if($session == null || $session == ''){
+    header("Location: account.php");
+    die();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

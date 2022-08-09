@@ -30,7 +30,19 @@ if($session == null || $session == ''){
 </head>
 <!--Main Navigation-->
 <?php
-include("navbar_usuario.php");
+$perfil=$_SESSION["perfil"];
+
+switch($perfil){
+    case '1':
+        include("navbar_usuario.php");
+    break;
+
+    case '2':
+        include("navbar.php");
+    break;
+            break;
+}
+
 include("../modules/productosModel.php");
 ?>
 

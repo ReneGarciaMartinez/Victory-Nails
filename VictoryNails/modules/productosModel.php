@@ -3,7 +3,7 @@ function get_productos(){
     
     $conect= mysqli_connect("localhost","root","","victory nails");
     $conect->set_charset("utf8");
-    $sql= "SELECT * FROM `productos`";
+    $sql= "SELECT * FROM `productos` WHERE activo=1";
     $getUs= mysqli_query($conect,$sql);
     $i=0;
     if($getUs->num_rows>0){
@@ -102,5 +102,123 @@ if ($c==0) {
     
 
 }
-
+function getProductosAdmin(){
+    
+    $conect= mysqli_connect("localhost","root","","victory nails");
+    $conect->set_charset("utf8");
+    $sql= "SELECT * FROM `productos` WHERE activo=1";
+    $getUs= mysqli_query($conect,$sql);
+    
+    if($getUs->num_rows>0){
+            while($row = mysqli_fetch_array($getUs)){
+         ?>
+          <tr>
+          <th class="text-dark"><?php echo $row["id_producto"]?></th>
+          <th class="text-dark"><?php echo $row["nombre"]?></th>
+          <th class="text-dark"><?php echo $row["precio"]?></th>
+          <th class="text-dark"><?php echo $row["stock"]?></th>
+          <th class="text-dark"><?php echo $row["vendidos"]?></th>
+          <th class="text-dark"><?php echo $row["descripcion"]?></th>
+          <th class="text-dark"><?php echo $row["marca"]?></th>
+          <th>
+    
+          <form class="pb-1" action='../controllers/control/productosController.php' method='POST' 
+          onSubmit="if(!confirm('¿Realmente quiere desactivar este producto?')){return false;}">
+            <input type='hidden' name='id_producto' value="<?php echo $row["id_producto"];?>">
+            <input type='hidden' value='desactivarProducto' name='valor'>
+            <input type="submit"value="Desactivar" class="btn-sm btn-danger">
+          </form>
+    
+          <form action='agregarProducto.php' method='POST'>
+          <input type='hidden' value="<?php echo $row["id_producto"];?>" name='id_producto'>
+          <input type='hidden' value='editarProducto' name='valor'>
+          <input type="submit" value="    Editar   " class="btn-sm btn-primary">
+        </form>
+        </th>
+        </tr>
+        <?php
+            }
+        }   
+    }
+    function desactivarProducto($id){
+        $conect= mysqli_connect("localhost","root","","victory nails");
+        $conect->set_charset("utf8");
+        $sql= "UPDATE `productos` SET `activo` = '0' WHERE `productos`.`id_producto` =".$id;
+$delUs= mysqli_query($conect,$sql);
+if($delUs){
+    echo "<script type=\"text/javascript\">alert(\"Producto desactivado\");</script>";
+    echo"<script type='text/javascript'>
+    window.location='../../vistas/productos.php';
+    </script>";
+}
+}
+function activarProducto($id){
+    $conect= mysqli_connect("localhost","root","","victory nails");
+    $conect->set_charset("utf8");
+    $sql= "UPDATE `productos` SET `activo` = '1' WHERE `productos`.`id_producto` =".$id;
+$delUs= mysqli_query($conect,$sql);
+if($delUs){
+echo "<script type=\"text/javascript\">alert(\"Producto desactivado\");</script>";
+echo"<script type='text/javascript'>
+window.location='../../vistas/productos.php';
+</script>";
+}
+}
+function getProductosDesactivados(){
+    
+    $conect= mysqli_connect("localhost","root","","victory nails");
+    $conect->set_charset("utf8");
+    $sql= "SELECT * FROM `productos` WHERE activo=0";
+    $getUs= mysqli_query($conect,$sql);
+    
+    if($getUs->num_rows>0){
+            while($row = mysqli_fetch_array($getUs)){
+         ?>
+          <tr>
+          <th class="text-dark"><?php echo $row["id_producto"]?></th>
+          <th class="text-dark"><?php echo $row["nombre"]?></th>
+          <th class="text-dark"><?php echo $row["precio"]?></th>
+          <th class="text-dark"><?php echo $row["stock"]?></th>
+          <th class="text-dark"><?php echo $row["vendidos"]?></th>
+          <th class="text-dark"><?php echo $row["descripcion"]?></th>
+          <th class="text-dark"><?php echo $row["marca"]?></th>
+          <th>
+          <form class="pb-1" action='../controllers/control/productosController.php' method='POST' 
+          onSubmit="if(!confirm('¿Realmente quiere activar este Producto?')){return false;}">
+            <input type='hidden' name='id_producto' value="<?php echo $row["id_producto"];?>">
+            <input type='hidden' value='activarProducto' name='valor'>
+            <input type="submit"value="Activar" class="btn-sm btn-success">
+          </form>
+    
+        </th>
+        </tr>
+        <?php
+            }
+        }   
+    }
+    function  updateProducto($id,$nombre,$precio,$img,$activo,$stock,$vendidos,$descripcion,$marca){
+        $conect= mysqli_connect("localhost","root","","victory nails");
+        $conect->set_charset("utf8");
+        $sql= "UPDATE `productos` SET `nombre` = '$nombre', `precio` = '$precio', `stock` = '$stock', `vendidos` = '$vendidos', `descripcion` = '$descripcion', `activo` = '$activo', `img` = '$img', `marca` = '$marca' WHERE `productos`.`id_producto` = ".$id;
+        $updateProducto= mysqli_query($conect,$sql);
+        if($updateProducto){
+            echo "<script type=\"text/javascript\">alert(\"Producto actualizado\");</script>";
+            echo"<script type='text/javascript'>
+            window.location='../../vistas/productos.php';
+            </script>";
+        }
+    }
+    
+    function  agregarProducto($nombre,$img,$precio,$stock,$descripcion,$marca){
+        $conect= mysqli_connect("localhost","root","","victory nails");
+        $conect->set_charset("utf8");
+        $sql= "INSERT INTO `productos` (`id_producto`, `nombre`, `precio`,`vendidos`, `stock`, `descripcion`, `activo`, `img`, `marca`) VALUES (NULL, '$nombre', '$precio','0', '$stock', '$descripcion', '1', '$img', '$marca')";
+        $agregarProducto= mysqli_query($conect,$sql);
+        if($agregarProducto){
+            echo "<script type=\"text/javascript\">alert(\"Producto agregado\");</script>";
+            echo"<script type='text/javascript'>
+            window.location='../../vistas/productos.php';
+            </script>";
+        }
+    }
     ?>

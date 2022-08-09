@@ -22,12 +22,22 @@ $query = mysqli_query($conect,$log);
        $_SESSION["nombre"]= $row["nombre"];
        $_SESSION["apellidos"]= $row["apellidos"];
        $_SESSION["perfil"]= $row["id_perfil"];
+       $_SESSION["direccion"]= $row["direccion"];
+       $_SESSION["telefono"]= $row["telefono"];
        
      
     
-       echo"<script type='text/javascript'>
-       window.location='../vistas/home.php';
-       </script>";
+       if($_SESSION["perfil"]==1){
+        echo"<script type='text/javascript'>
+        window.location='../vistas/home.php';
+        </script>";
+       }else{
+        if($_SESSION["perfil"]==2)
+        echo"<script type='text/javascript'>
+        window.location='../vistas/productos.php';
+        </script>";
+       }
+       
        }else {
          session_destroy();
         echo "<script type=\"text/javascript\">alert(\"Usuario o contraseña incorrectas\");</script>"; 

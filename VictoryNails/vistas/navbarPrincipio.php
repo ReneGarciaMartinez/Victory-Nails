@@ -1,12 +1,4 @@
-<?php
-@session_start();
-error_reporting(0);
-$session = $_SESSION["nombre"];
-if($session == null || $session == ''){
-    header("Location: account.php");
-    die();
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +30,7 @@ if($session == null || $session == ''){
                 </p>
 
             </div>
-            <p>Bienvenido <?php echo $_SESSION["nombre"] ?> <?php echo $_SESSION["apellidos"] ?></p>
+            
             <ul class="navbar-nav flex-row d-none d-md-flex pad-vanLe">
 
                
@@ -48,12 +40,6 @@ if($session == null || $session == ''){
                         <span><img src="../img/shopping-cart.ico" width="20px" height="20px"></img></span>
                     </a>
                 </li>
-                <li class="nav-item me-3 me-lg-2 active">
-                    
-                    <a class="nav-link text-dark" href="../controllers/logout.php"  aria-disabled="true"><i class="fa fa-door-open" aria-hidden="true"></i>Salir</a>
-
-                </li>
-
             </ul>
         </div>
     </nav>
