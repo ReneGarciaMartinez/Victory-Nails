@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-08-2022 a las 06:48:15
+-- Tiempo de generación: 10-08-2022 a las 23:06:34
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.1.2
 
@@ -31,29 +31,9 @@ CREATE TABLE `carrito` (
   `id_carrito` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
-  `id_nota` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `total_de_producto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `marca`
---
-
-CREATE TABLE `marca` (
-  `id_marca` int(11) NOT NULL,
-  `nombre` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `marca`
---
-
-INSERT INTO `marca` (`id_marca`, `nombre`) VALUES
-(1, 'calvin klein'),
-(2, 'Marca no registrada aun');
 
 -- --------------------------------------------------------
 
@@ -97,11 +77,11 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id_producto`, `nombre`, `precio`, `stock`, `vendidos`, `descripcion`, `activo`, `img`, `marca`) VALUES
-(3, 'Kalvin Klein', 350, '0', '1', 'perfume Calvin Klein', 0, 'https://cdn.pixabay.com/photo/2015/08/18/08/52/perfume-893475__480.jpg', 'calvin'),
-(4, 'calvin klein2', 5000, '0', '1', 'otro perfume ', 1, 'https://cdn.pixabay.com/photo/2015/08/18/08/52/perfume-893475__480.jpg', 'calvin'),
-(5, 'victoria secret', 350, '0', '1', 'victoria secret', 1, 'https://es.victoriassecret.com/p/380x507/tif/77/a4/77a4e5c8a1034a1997231d1131c1bccb/SU20_BTY_035_e10139578.jpg', 'victoria secret'),
-(6, 'Cuba', 300, '3', '0', 'otro perfume mas chido', 1, 'https://respaldo.mundoaromas.cl/wp-content/uploads/2020/05/810-cuba-paris-5425017732389.png', 'cuba'),
-(7, 'Forever Wiskonsin', 0, '2', '0', 'otro perfume aun mas chido', 1, '600', 'albertano');
+(3, 'Kalvin Klein', 350, '3', '0', 'perfume Calvin Klein', 0, 'https://cdn.pixabay.com/photo/2015/08/18/08/52/perfume-893475__480.jpg', 'calvin'),
+(4, 'calvin klein2', 5000, '1', '2', 'otro perfume ', 1, 'https://cdn.pixabay.com/photo/2015/08/18/08/52/perfume-893475__480.jpg', 'calvin'),
+(5, 'victoria secret', 350, '2', '1', 'victoria secret', 1, 'https://es.victoriassecret.com/p/380x507/tif/77/a4/77a4e5c8a1034a1997231d1131c1bccb/SU20_BTY_035_e10139578.jpg', 'victoria secret'),
+(6, 'Cuba', 300, '0', '3', 'otro perfume mas chido', 1, 'https://respaldo.mundoaromas.cl/wp-content/uploads/2020/05/810-cuba-paris-5425017732389.png', 'cuba'),
+(7, 'Forever Wiskonsin', 600, '3', '0', 'otro perfume aun mas chido', 1, 'https://i.blogs.es/5cb3f0/moschino-launches-new-male-fragrance-moschino-forever/1366_2000.jpg', 'albertano');
 
 -- --------------------------------------------------------
 
@@ -139,17 +119,23 @@ CREATE TABLE `ventas` (
   `id` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `id_venta` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL
+  `id_usuario` int(11) NOT NULL,
+  `total` int(50) NOT NULL,
+  `envio` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `ventas`
 --
 
-INSERT INTO `ventas` (`id`, `id_producto`, `id_venta`, `id_usuario`) VALUES
-(1, 3, 1, 2),
-(10, 4, 2, 2),
-(11, 5, 3, 2);
+INSERT INTO `ventas` (`id`, `id_producto`, `id_venta`, `id_usuario`, `total`, `envio`) VALUES
+(1, 3, 1, 2, 350, 1),
+(17, 4, 2, 2, 5650, 1),
+(18, 5, 2, 2, 5650, 1),
+(19, 6, 2, 2, 5650, 1),
+(20, 6, 3, 2, 300, 1),
+(21, 6, 4, 2, 5300, 0),
+(22, 4, 4, 2, 5300, 0);
 
 --
 -- Índices para tablas volcadas
@@ -162,12 +148,6 @@ ALTER TABLE `carrito`
   ADD PRIMARY KEY (`id_carrito`),
   ADD KEY `id_producto` (`id_producto`),
   ADD KEY `id_usuario` (`id_usuario`);
-
---
--- Indices de la tabla `marca`
---
-ALTER TABLE `marca`
-  ADD PRIMARY KEY (`id_marca`);
 
 --
 -- Indices de la tabla `perfil`
@@ -204,13 +184,7 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `marca`
---
-ALTER TABLE `marca`
-  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `perfil`
@@ -234,7 +208,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Restricciones para tablas volcadas

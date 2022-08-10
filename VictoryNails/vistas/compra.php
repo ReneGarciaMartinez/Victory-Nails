@@ -92,13 +92,13 @@ include("../modules/productosModel.php");
                 <p class="card-text">
                     Disponible
                 </p>
-                <p>
-                    Entrega: ***********
-                </p>
-                <p>
-                    Enviar a: ***********
-                </p>
-                <a href="#" class="btn btn-primary btn-rounded">Añadir carrito</a>
+                <form action='../controllers/control/productosController.php' method='POST'>
+                             <input type='hidden' value="<?php echo $row["id_producto"];?>" name='id_producto'>
+                             <input type='hidden' value='agregar_a_carrito' name='valor'>
+                             <button type="submit" class="btn btn-outline-success" style="height: 37px; width: 60px;">
+                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                            </button>
+                        </form>  
                 <form action='../controllers/control/productosController.php' method='POST'>
         <input type='hidden' value="<?php echo $id;?>" name='id_producto'>
         <input type='hidden' value='comprarlo_ahora' name='valor'>

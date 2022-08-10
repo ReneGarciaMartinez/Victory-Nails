@@ -44,7 +44,7 @@ if($session == null || $session == ''){
                
 
                 <li class="nav-item me-3 me-lg-2 active">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="carrito.php">
                         <span><img src="../img/shopping-cart.ico" width="20px" height="20px"></img></span>
                     </a>
                 </li>
